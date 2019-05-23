@@ -11,7 +11,7 @@ import view.View;
 
 /**
  * The Class Main.
- *test
+ * test2
  * @author Jean-Aymeric Diet
  */
 public abstract class Main {
