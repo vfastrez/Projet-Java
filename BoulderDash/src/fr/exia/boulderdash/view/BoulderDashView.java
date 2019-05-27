@@ -54,6 +54,7 @@ public class BoulderDashView implements Runnable, KeyListener, IBoulderDashView 
         boardFrame.setDisplayFrame(this.closeView);
         boardFrame.setSize(this.closeView.width * squareSize, this.closeView.height * squareSize);
         boardFrame.setHeightLooped(true);
+        boardFrame.setLocationRelativeTo(null);
         boardFrame.addKeyListener(this);
         boardFrame.setFocusable(true);
         boardFrame.setFocusTraversalKeysEnabled(false);

@@ -8,6 +8,6 @@ class Vide extends MotionlessElement {
     private static final Sprite SPRITE = new Sprite(' ', "vide.png");
 
     Vide() {
-        super(SPRITE, Permeability.PENETRABLE);
+        super(SPRITE, Permeability.TERRE);
     }
 }

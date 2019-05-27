@@ -88,4 +88,8 @@ class Map extends Observable implements IMap {
     public IElement getVide() {
     	return MotionlessElementsFactory.createMacadam();
     }
+    
+    public IElement getDiamant() {
+    	return MotionlessElementsFactory.createDiamant();
+    }
 }

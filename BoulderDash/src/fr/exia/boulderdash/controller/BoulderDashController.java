@@ -30,30 +30,23 @@ public class BoulderDashController implements IBoulderDashController, IOrderPerf
         while (this.getModel().getMyHero().isAlive()) {
             Thread.sleep(speed);
             this.getView().parcourirTableau();
+            int xHero = getModel().getMyHero().getX();
+            int yHero = getModel().getMyHero().getY();
             switch (this.getStackOrder()) {
                 case RIGHT:
-                	this.checkTerre();
-                    this.getModel().getMyHero().moveRight();
+                	this.checkDeplacement(xHero + 1, yHero, "Right");
                     break;
                     
                 case LEFT:
-                	this.checkTerre();
-                    this.getModel().getMyHero().moveLeft();
+                	this.checkDeplacement(xHero - 1, yHero, "Left");
                     break;
                     
                 case UP:
-                	this.checkTerre();
-                    this.getModel().getMyHero().moveUp();
+                	this.checkDeplacement(xHero, yHero - 1, "Up");
                     break;
                     
                 case DOWN:
-                	int xVehicle4 = this.getModel().getMyHero().getX();
-                	int yVehicle4 = this.getModel().getMyHero().getY();
-                	if (this.getModel().getMap().getOnTheMapXY(xVehicle4, yVehicle4 + 1).getPermeability() == this.getModel().getMap().getTerre().getPermeability())
-                	{
-                		this.getModel().getMap().setOnTheMapXY( this.getModel().getMap().getVide() ,xVehicle4 , yVehicle4 + 1);
-                	}
-                    this.getModel().getMyHero().moveDown();
+                	this.checkDeplacement(xHero, yHero + 1, "Down");
                     break;
                     
                 case NOP:
@@ -67,46 +60,66 @@ public class BoulderDashController implements IBoulderDashController, IOrderPerf
         this.getView().displayMessage("CRASH !!!!!!!!!.");
     }
     
-    public void checkTerre()
+    public void checkDeplacement(int xHero, int yHero, String Direction)
     {
-    	int xHero = this.getModel().getMyHero().getX();
-    	int yHero = this.getModel().getMyHero().getY();
-    	
-    	switch(this.getStackOrder())
+    	if (this.getModel().getMap().getOnTheMapXY(xHero, yHero).getPermeability() == this.getModel().getMap().getTerre().getPermeability())
     	{
-    	case DOWN :
-    		if (this.getModel().getMap().getOnTheMapXY(xHero, yHero + 1).getPermeability() == this.getModel().getMap().getTerre().getPermeability())
-        	{
-        		this.getModel().getMap().setOnTheMapXY( this.getModel().getMap().getVide() ,xHero , yHero);
-        	}
-            break;
-            
-    	case RIGHT:
-        	if (this.getModel().getMap().getOnTheMapXY(xHero + 1 , yHero).getPermeability() == this.getModel().getMap().getTerre().getPermeability())
-        	{
-        		this.getModel().getMap().setOnTheMapXY( this.getModel().getMap().getVide() ,xHero +1 , yHero);
-        	}
-            break;
-            
-        case LEFT:
-        	if (this.getModel().getMap().getOnTheMapXY(xHero - 1 , yHero).getPermeability() == this.getModel().getMap().getTerre().getPermeability())
-        	{
-        		this.getModel().getMap().setOnTheMapXY( this.getModel().getMap().getVide() ,xHero -1 , yHero);
-        	}
-            break;
-            
-        case UP:
-        	if (this.getModel().getMap().getOnTheMapXY(xHero, yHero - 1).getPermeability() == this.getModel().getMap().getTerre().getPermeability())
-        	{
-        		this.getModel().getMap().setOnTheMapXY( this.getModel().getMap().getVide() ,xHero , yHero - 1);
-        	}
-            break;
-            
-        case NOP:
-        default:
-            this.getModel().getMyHero().doNothing();
-            break;
+    		
+    		
+    		this.moveTerre(xHero, yHero, Direction);
     	}
+    	
+    	else if (this.getModel().getMap().getOnTheMapXY(xHero, yHero).getPermeability() == this.getModel().getMap().getDiamant().getPermeability())
+    	{
+    		
+    		this.moveDiamant(xHero, yHero, Direction);
+    	}
+    }
+    
+    public void moveTerre(int xHero, int yHero, String Direction)
+    {
+        this.getModel().getMap().setOnTheMapXY( this.getModel().getMap().getVide() ,xHero , yHero);
+       
+		
+		if(Direction == "Right") {
+			this.getModel().getMyHero().moveRight();
+		}
+			
+		else if(Direction == "Left") {
+			this.getModel().getMyHero().moveLeft();
+		}
+			
+		else if(Direction == "Up") {
+			this.getModel().getMyHero().moveUp();
+		}
+			
+		else if(Direction == "Down") {
+			this.getModel().getMyHero().moveDown();
+		}
+			
+		
+		
+    }
+    
+    public void moveDiamant(int xHero, int yHero, String Direction)
+    {
+    	this.getModel().getMap().setOnTheMapXY( this.getModel().getMap().getVide() ,xHero , yHero);
+    	
+    	if(Direction == "Right") {
+			this.getModel().getMyHero().moveRight();
+		}
+			
+		else if(Direction == "Left") {
+			this.getModel().getMyHero().moveLeft();
+		}
+			
+		else if(Direction == "Up") {
+			this.getModel().getMyHero().moveUp();
+		}
+			
+		else if(Direction == "Down") {
+			this.getModel().getMyHero().moveDown();
+		}
     }
 
     @Override

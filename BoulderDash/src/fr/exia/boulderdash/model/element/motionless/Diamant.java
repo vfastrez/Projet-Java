@@ -8,6 +8,6 @@ class Diamant extends MotionlessElement {
     private static final Sprite SPRITE = new Sprite('^', "diamant.png");
     
     Diamant() {
-        super(SPRITE, Permeability.BLOCKING);
+        super(SPRITE, Permeability.DIAMANT);
     }
 }

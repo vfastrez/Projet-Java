@@ -6,5 +6,7 @@ public enum Permeability {
 
     PENETRABLE,
     
-    TERRE;
+    TERRE,
+    
+    DIAMANT;
 }

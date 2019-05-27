@@ -17,5 +17,6 @@ public interface IMap {
     Observable getObservable();
     IElement getVide();
     IElement getTerre();
+    IElement getDiamant();
     void setOnTheMapXY(final IElement element, final int x, final int y);
 }
