@@ -9,6 +9,7 @@ import java.util.Observable;
 import fr.exia.boulderdash.model.element.IElement;
 import fr.exia.boulderdash.model.element.motionless.MotionlessElementsFactory;
 
+
 class Map extends Observable implements IMap {
 
     private int          width;
@@ -65,7 +66,7 @@ class Map extends Observable implements IMap {
         return this.onTheMap[x][y];
     }
 
-    private void setOnTheMapXY(final IElement element, final int x, final int y) {
+    public void setOnTheMapXY(final IElement element, final int x, final int y) {
         this.onTheMap[x][y] = element;
     }
 
@@ -78,5 +79,13 @@ class Map extends Observable implements IMap {
     @Override
     public Observable getObservable() {
         return this;
+    }
+    
+    public IElement getTerre() {
+    	return MotionlessElementsFactory.createTerre();
+    }
+    
+    public IElement getVide() {
+    	return MotionlessElementsFactory.createMacadam();
     }
 }

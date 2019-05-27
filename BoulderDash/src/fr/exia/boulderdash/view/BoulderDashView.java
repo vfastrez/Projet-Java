@@ -25,7 +25,7 @@ public class BoulderDashView implements Runnable, KeyListener, IBoulderDashView 
 
     private IMap            map;
 
-    private IMobile          myHero;
+    private IMobile          myVehicle;
 
     private int              view;
 
@@ -45,9 +45,11 @@ public class BoulderDashView implements Runnable, KeyListener, IBoulderDashView 
         JOptionPane.showMessageDialog(null, message);
     }
 
+    private final BoardFrame boardFrame = new BoardFrame("Close view");
+    
     @Override
     public final void run() {
-        final BoardFrame boardFrame = new BoardFrame("Close view");
+        
         boardFrame.setDimension(new Dimension(this.getMap().getWidth(), this.getMap().getHeight()));
         boardFrame.setDisplayFrame(this.closeView);
         boardFrame.setSize(this.closeView.width * squareSize, this.closeView.height * squareSize);
@@ -56,17 +58,22 @@ public class BoulderDashView implements Runnable, KeyListener, IBoulderDashView 
         boardFrame.setFocusable(true);
         boardFrame.setFocusTraversalKeysEnabled(false);
 
-        for (int x = 0; x < this.getMap().getWidth(); x++) {
-            for (int y = 0; y < this.getMap().getHeight(); y++) {
-                boardFrame.addSquare(this.map.getOnTheMapXY(x, y), x, y);
-            }
-        }
+        parcourirTableau();
         boardFrame.addPawn(this.getMyHero());
 
         this.getMap().getObservable().addObserver(boardFrame.getObserver());
         this.followMyHero();
 
         boardFrame.setVisible(true);
+    }
+
+    public void parcourirTableau()
+    {
+    	for (int x = 0; x < this.getMap().getWidth(); x++) {
+            for (int y = 0; y < this.getMap().getHeight(); y++) {
+                boardFrame.addSquare(this.map.getOnTheMapXY(x, y), x, y); 
+            }
+    	}
     }
 
     public final void show(final int yStart) {
@@ -107,6 +114,7 @@ public class BoulderDashView implements Runnable, KeyListener, IBoulderDashView 
         return userOrder;
     }
 
+
     @Override
     public void keyTyped(final KeyEvent keyEvent) {
     }
@@ -124,11 +132,10 @@ public class BoulderDashView implements Runnable, KeyListener, IBoulderDashView 
     public void keyReleased(final KeyEvent keyEvent) {
     }
 
-    @Override
     public final void followMyHero() {
         this.getCloseView().y = this.getMyHero().getY() - 3;
     }
-
+    
     private IMap getMap() {
         return this.map;
     }
@@ -143,11 +150,11 @@ public class BoulderDashView implements Runnable, KeyListener, IBoulderDashView 
     }
 
     private IMobile getMyHero() {
-        return this.myHero;
+        return this.myVehicle;
     }
 
-    private void setMyHero(final IMobile myHero) {
-        this.myHero = myHero;
+    private void setMyHero(final IMobile myVehicle) {
+        this.myVehicle = myVehicle;
     }
 
     private int getView() {
