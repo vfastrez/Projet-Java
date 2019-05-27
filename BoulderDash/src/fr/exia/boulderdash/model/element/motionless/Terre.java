@@ -8,6 +8,6 @@ class Terre extends MotionlessElement {
     private static final Sprite SPRITE = new Sprite('X', "terre.png");
 
     Terre() {
-        super(SPRITE, Permeability.PENETRABLE);
+        super(SPRITE, Permeability.TERRE);
     }
 }

@@ -4,5 +4,7 @@ public enum Permeability {
 
     BLOCKING,
 
-    PENETRABLE;
+    PENETRABLE,
+    
+    TERRE;
 }
