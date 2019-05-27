@@ -32,32 +32,17 @@ public class BoulderDashController implements IBoulderDashController, IOrderPerf
             this.getView().parcourirTableau();
             switch (this.getStackOrder()) {
                 case RIGHT:
-                	int xHero = this.getModel().getMyHero().getX();
-                	int yHero = this.getModel().getMyHero().getY();
-                	if (this.getModel().getMap().getOnTheMapXY(xHero + 1 , yHero).getPermeability() == this.getModel().getMap().getTerre().getPermeability())
-                	{
-                		this.getModel().getMap().setOnTheMapXY( this.getModel().getMap().getVide() ,xHero +1 , yHero);
-                	}
+                	this.checkTerre();
                     this.getModel().getMyHero().moveRight();
                     break;
                     
                 case LEFT:
-                	int xVehicle2 = this.getModel().getMyHero().getX();
-                	int yVehicle2 = this.getModel().getMyHero().getY();
-                	if (this.getModel().getMap().getOnTheMapXY(xVehicle2 - 1 , yVehicle2).getPermeability() == this.getModel().getMap().getTerre().getPermeability())
-                	{
-                		this.getModel().getMap().setOnTheMapXY( this.getModel().getMap().getVide() ,xVehicle2 -1 , yVehicle2);
-                	}
+                	this.checkTerre();
                     this.getModel().getMyHero().moveLeft();
                     break;
                     
                 case UP:
-                	int xVehicle3 = this.getModel().getMyHero().getX();
-                	int yVehicle3 = this.getModel().getMyHero().getY();
-                	if (this.getModel().getMap().getOnTheMapXY(xVehicle3, yVehicle3 - 1).getPermeability() == this.getModel().getMap().getTerre().getPermeability())
-                	{
-                		this.getModel().getMap().setOnTheMapXY( this.getModel().getMap().getVide() ,xVehicle3 , yVehicle3 - 1);
-                	}
+                	this.checkTerre();
                     this.getModel().getMyHero().moveUp();
                     break;
                     
@@ -80,6 +65,48 @@ public class BoulderDashController implements IBoulderDashController, IOrderPerf
             this.clearStackOrder();
         }
         this.getView().displayMessage("CRASH !!!!!!!!!.");
+    }
+    
+    public void checkTerre()
+    {
+    	int xHero = this.getModel().getMyHero().getX();
+    	int yHero = this.getModel().getMyHero().getY();
+    	
+    	switch(this.getStackOrder())
+    	{
+    	case DOWN :
+    		if (this.getModel().getMap().getOnTheMapXY(xHero, yHero + 1).getPermeability() == this.getModel().getMap().getTerre().getPermeability())
+        	{
+        		this.getModel().getMap().setOnTheMapXY( this.getModel().getMap().getVide() ,xHero , yHero);
+        	}
+            break;
+            
+    	case RIGHT:
+        	if (this.getModel().getMap().getOnTheMapXY(xHero + 1 , yHero).getPermeability() == this.getModel().getMap().getTerre().getPermeability())
+        	{
+        		this.getModel().getMap().setOnTheMapXY( this.getModel().getMap().getVide() ,xHero +1 , yHero);
+        	}
+            break;
+            
+        case LEFT:
+        	if (this.getModel().getMap().getOnTheMapXY(xHero - 1 , yHero).getPermeability() == this.getModel().getMap().getTerre().getPermeability())
+        	{
+        		this.getModel().getMap().setOnTheMapXY( this.getModel().getMap().getVide() ,xHero -1 , yHero);
+        	}
+            break;
+            
+        case UP:
+        	if (this.getModel().getMap().getOnTheMapXY(xHero, yHero - 1).getPermeability() == this.getModel().getMap().getTerre().getPermeability())
+        	{
+        		this.getModel().getMap().setOnTheMapXY( this.getModel().getMap().getVide() ,xHero , yHero - 1);
+        	}
+            break;
+            
+        case NOP:
+        default:
+            this.getModel().getMyHero().doNothing();
+            break;
+    	}
     }
 
     @Override
