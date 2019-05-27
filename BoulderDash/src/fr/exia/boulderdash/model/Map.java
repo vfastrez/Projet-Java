@@ -8,7 +8,7 @@ import java.util.Observable;
 
 import fr.exia.boulderdash.model.element.IElement;
 import fr.exia.boulderdash.model.element.motionless.MotionlessElementsFactory;
-
+import fr.exia.boulderdash.model.element.semimobile.SemiMobileElementFactory;
 
 class Map extends Observable implements IMap {
 
@@ -86,10 +86,10 @@ class Map extends Observable implements IMap {
     }
     
     public IElement getVide() {
-    	return MotionlessElementsFactory.createMacadam();
+    	return MotionlessElementsFactory.createVide();
     }
     
     public IElement getDiamant() {
-    	return MotionlessElementsFactory.createDiamant();
+    	return SemiMobileElementFactory.createDiamant();
     }
 }

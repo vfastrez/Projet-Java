@@ -8,22 +8,14 @@ public abstract class MotionlessElementsFactory {
 
     private static final Terre  terre  = new Terre();
 
-    private static final Ennemi  ennemi  = new Ennemi();
-
-    private static final Diamant                DIAMANT                = new Diamant();
-
     private static final Vide             VIDE             = new Vide();
-
-    private static final Rocher            ROCHER            = new Rocher();
 
     private static MotionlessElement[]       motionlessElements  = {
         sortie,
         bordure,
         terre,
-        ennemi,
-        VIDE,
-        ROCHER,
-        DIAMANT, };
+
+        VIDE,};
     
     public static MotionlessElement sortie() {
         return sortie;
@@ -37,20 +29,8 @@ public abstract class MotionlessElementsFactory {
         return terre;
     }
 
-    public static MotionlessElement createEnnemi() {
-        return ennemi;
-    }
-
-    public static MotionlessElement createMacadam() {
+    public static MotionlessElement createVide() {
         return VIDE;
-    }
-
-    public static MotionlessElement createObstacle() {
-        return ROCHER;
-    }
-
-    public static MotionlessElement createDiamant() {
-        return DIAMANT;
     }
 
     public static MotionlessElement getFromFileSymbol(final char fileSymbol) {

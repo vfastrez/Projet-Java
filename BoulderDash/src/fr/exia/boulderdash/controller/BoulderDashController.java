@@ -21,10 +21,6 @@ public class BoulderDashController implements IBoulderDashController, IOrderPerf
         this.clearStackOrder();
     }
 
-    /*
-     * (non-Javadoc)
-     * @see fr.exia.insanevehicles.controller.IIinsaneVehiclesController#play()
-     */
     @Override
     public final void play() throws InterruptedException {
         while (this.getModel().getMyHero().isAlive()) {
