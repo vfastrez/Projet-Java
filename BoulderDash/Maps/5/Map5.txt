@@ -1,9 +1,9 @@
 20
 20
 ++++++++++++++++++++
-+OXOX+X^^X+^^^^+XXX+
-+O*OX+^XX^+^O^O+X/X+
-+XXXX+XXXX+OXOX+OXX+
++OXXX+X^^X+^^^^+XXX+
++OOXO+^XX^+^O^O+X/X+
++OO*X+XXXX+OXOX+OXX+
 +^OO^+XXXOXXXXX+XOX+
 +XXOX+OXXX+OX  +XXX+
 +  XX+XOXO+^O  +XOO+

@@ -1,9 +1,9 @@
 20
 20
 ++++++++++++++++++++
-+OXOX+XXXX+  !+ OO +
-+X*XO+X^^XX   +OXXO+
-+XXXX+X^^X+   XXXXX+
++OOXX+XXXX+  !+^OO^+
++XXXO+X^^XX   +OXXO+
++XX*X+X^^X+   XXXXX+
 +XXXX+XXXX+!  +XOOX+
 +++X+++X+++++++ XX +
 +XOXO+XXO^+XOO+ XX +
@@ -15,7 +15,7 @@
 +X  XX XX +X^XXX XX+
 +^XX^+ !  + X + XX^+
 ++X+++ XX +X++++++++
-+XXX^+ !  +OXO+OXXO+
++XXX^+ !  +XXO+OXXO+
 +XX^X+ XX +X X+X /X+
 +X^XX+  ! +X XXX  X+
 +^XXX+!  !+OXO+OXXO+

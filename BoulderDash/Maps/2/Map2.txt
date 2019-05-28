@@ -2,8 +2,8 @@
 20
 ++++++++++++++++++++
 +XOOX ^+O^^O+^OOOO^+
-+X*XX !+^OO^+XXXXXX+
-+XXXXXX+XXXX+OX^^XO+
++XXXX !+^OO^+XXXXXX+
++XX*XXX+XXXX+OX^^XO+
 +XOXX  +XXXX+OX^^XO+
 +^XOXXOXX  XXXXXXXX+
 +XXXXXXX X XXX   !^+
@@ -13,10 +13,10 @@
 +X^X   XX^^OO XXOXO+
 +XXX ! +^OO^+XOXXXX+
 +++++XX++XX++XX+++++
-+!   XXX    XXX X X+
+X!   XXX    XXX X X+
 +  ^ !XX  ! XXOXOX X
 +  XX  +XXXX+ X X X+
-+ !XX  +XXXX+XOXOXO+
++ ^XX ^+XXXX+XOXOXO+
 +      +X^^X+ X X X+
-+ ^ ^ ^+^OO^+X XO/ +
++ ! ^  +^OO^+X XO/ +
 ++++++++++++++++++++
