@@ -23,7 +23,8 @@ public abstract class MotionlessElementsFactory {
         ROCHER,
         DIAMANT,
         ENNEMI,
-        VIDE,};
+        VIDE};
+        
     
     public static MotionlessElement sortie() {
         return new Sortie();

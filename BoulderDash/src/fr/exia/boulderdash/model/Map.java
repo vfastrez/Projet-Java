@@ -132,4 +132,9 @@ class Map extends Observable implements IMap {
     public IElement getBordure() {
     	return MotionlessElementsFactory.createBordure();
     }
+
+	@Override
+	public IElement getEnnemi() {
+		return MotionlessElementsFactory.createEnnemi();
+	}
 }

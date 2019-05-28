@@ -19,7 +19,9 @@ public interface IMap {
     IElement getTerre();
     IElement getDiamant();
     IElement getRocher();
+    IElement getBordure();
+	IElement getEnnemi();
     void setOnTheMapXY(final IElement element, final int x, final int y);
 
-	IElement getBordure();
+	
 }

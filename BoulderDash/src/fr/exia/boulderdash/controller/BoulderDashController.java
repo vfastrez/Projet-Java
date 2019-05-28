@@ -32,27 +32,32 @@ public class BoulderDashController implements IBoulderDashController, IOrderPerf
                 case RIGHT:
                 	this.checkDeplacement(xHero + 1, yHero, "Right");
                 	checkTombable();
+                	MoveEnnemi();
                     break;
                     
                 case LEFT:
                 	this.checkDeplacement(xHero - 1, yHero, "Left");
                 	checkTombable();
+                	MoveEnnemi();
                     break;
                     
                 case UP:
                 	this.checkDeplacement(xHero, yHero - 1, "Up");
                 	checkTombable();
+                	MoveEnnemi();
                     break;
                     
                 case DOWN:
                 	this.checkDeplacement(xHero, yHero + 1, "Down");
                 	checkTombable();
+                	MoveEnnemi();
                     break;
                     
                 case NOP:
                 default:
                     this.getModel().getMyHero().doNothing();
                     checkTombable();
+                    MoveEnnemi();
                     break;
                  
             }
@@ -60,6 +65,7 @@ public class BoulderDashController implements IBoulderDashController, IOrderPerf
         }
         this.getView().displayMessage("CRASH !!!!!!!!!.");
     }
+    
     
     public void checkDeplacement(int xHero, int yHero, String Direction)
     {
@@ -160,7 +166,46 @@ public class BoulderDashController implements IBoulderDashController, IOrderPerf
                 	
               }
             }
-    	}
+    }
+    
+    public void MoveEnnemi() {
+    
+    for (int x = this.getModel().getMap().getWidth()-1; x > 0 ; x--) 
+    {
+        for (int y = this.getModel().getMap().getHeight() -1; y > 0 ; y--) 
+        {
+            getView().getBoardFrame().addSquare(this.getModel().getMap().getOnTheMapXY(x, y), x, y);
+            if(this.getModel().getMap().getOnTheMapXY(x, y).getPermeability() == this.getModel().getMap().getEnnemi().getPermeability())
+            {
+                if(this.getModel().getMap().getOnTheMapXY(x + 1, y).getPermeability() == this.getModel().getMap().getVide().getPermeability())
+                {
+                    this.getModel().getMap().setOnTheMapXY( this.getModel().getMap().getVide() ,x , y);
+                    this.getModel().getMap().setOnTheMapXY( this.getModel().getMap().getEnnemi() ,x + 1, y);
+                    
+                    if(this.getModel().getMap().getOnTheMapXY(x , y - 1).getPermeability() == this.getModel().getMap().getVide().getPermeability())
+                    {
+                        this.getModel().getMap().setOnTheMapXY( this.getModel().getMap().getVide() ,x , y);
+                        this.getModel().getMap().setOnTheMapXY( this.getModel().getMap().getEnnemi() ,x , y - 1);
+                    
+                        if(this.getModel().getMap().getOnTheMapXY(x - 1 , y).getPermeability() == this.getModel().getMap().getVide().getPermeability())
+                        {
+                        	this.getModel().getMap().setOnTheMapXY( this.getModel().getMap().getVide() ,x , y);
+                        	this.getModel().getMap().setOnTheMapXY( this.getModel().getMap().getEnnemi() ,x - 1 , y);
+                        
+                        	if(this.getModel().getMap().getOnTheMapXY(x , y + 1).getPermeability() == this.getModel().getMap().getVide().getPermeability())
+                        	{
+                        		this.getModel().getMap().setOnTheMapXY( this.getModel().getMap().getVide() ,x , y);
+                        		this.getModel().getMap().setOnTheMapXY( this.getModel().getMap().getEnnemi() ,x , y + 1);
+                        	}
+                        }
+                    }
+                }
+             }
+         }
+    }
+}
+      
+
     
 	@Override
     public final void orderPerform(final UserOrder userOrder) throws IOException {
@@ -201,3 +246,4 @@ public class BoulderDashController implements IBoulderDashController, IOrderPerf
     }
 
 }
+
