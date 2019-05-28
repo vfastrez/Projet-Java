@@ -30,7 +30,7 @@ public class BoulderDashView implements Runnable, KeyListener, IBoulderDashView 
     private int              view;
 
     private IOrderPerformer  orderPerformer;
-
+    
     public BoulderDashView(final IMap map, final IMobile myHero) throws IOException {
         this.setView(roadView);
         this.setMap(map);
@@ -46,6 +46,11 @@ public class BoulderDashView implements Runnable, KeyListener, IBoulderDashView 
     }
 
     private final BoardFrame boardFrame = new BoardFrame("Close view");
+    
+    public BoardFrame getBoardFrame()
+    {
+    	return this.boardFrame;
+    }
     
     @Override
     public final void run() {

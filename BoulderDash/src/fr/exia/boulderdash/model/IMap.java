@@ -18,5 +18,6 @@ public interface IMap {
     IElement getVide();
     IElement getTerre();
     IElement getDiamant();
+    IElement getRocher();
     void setOnTheMapXY(final IElement element, final int x, final int y);
 }

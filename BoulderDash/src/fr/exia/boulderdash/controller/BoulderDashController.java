@@ -31,23 +31,28 @@ public class BoulderDashController implements IBoulderDashController, IOrderPerf
             switch (this.getStackOrder()) {
                 case RIGHT:
                 	this.checkDeplacement(xHero + 1, yHero, "Right");
+                	checkTombable();
                     break;
                     
                 case LEFT:
                 	this.checkDeplacement(xHero - 1, yHero, "Left");
+                	checkTombable();
                     break;
                     
                 case UP:
                 	this.checkDeplacement(xHero, yHero - 1, "Up");
+                	checkTombable();
                     break;
                     
                 case DOWN:
                 	this.checkDeplacement(xHero, yHero + 1, "Down");
+                	checkTombable();
                     break;
                     
                 case NOP:
                 default:
                     this.getModel().getMyHero().doNothing();
+                    checkTombable();
                     break;
                  
             }
@@ -58,10 +63,8 @@ public class BoulderDashController implements IBoulderDashController, IOrderPerf
     
     public void checkDeplacement(int xHero, int yHero, String Direction)
     {
-    	if (this.getModel().getMap().getOnTheMapXY(xHero, yHero).getPermeability() == this.getModel().getMap().getTerre().getPermeability())
-    	{
-    		
-    		
+    	if (this.getModel().getMap().getOnTheMapXY(xHero, yHero).getPermeability() == this.getModel().getMap().getTerre().getPermeability()||this.getModel().getMap().getOnTheMapXY(xHero, yHero).getPermeability() == this.getModel().getMap().getVide().getPermeability())
+    	{		
     		this.moveTerre(xHero, yHero, Direction);
     	}
     	
@@ -99,7 +102,7 @@ public class BoulderDashController implements IBoulderDashController, IOrderPerf
     
     public void moveDiamant(int xHero, int yHero, String Direction)
     {
-    	this.getModel().getMap().setOnTheMapXY( this.getModel().getMap().getVide() ,xHero , yHero);
+    	this.getModel().getMap().setOnTheMapXY(this.getModel().getMap().getVide() ,xHero , yHero);
     	
     	if(Direction == "Right") {
 			this.getModel().getMyHero().moveRight();
@@ -118,7 +121,33 @@ public class BoulderDashController implements IBoulderDashController, IOrderPerf
 		}
     }
 
-    @Override
+    public void checkTombable()
+    {
+    	for (int x = this.getModel().getMap().getWidth()-1; x > 0 ; x--) {
+            for (int y = this.getModel().getMap().getHeight() -1; y > 0 ; y--) {
+                getView().getBoardFrame().addSquare(this.getModel().getMap().getOnTheMapXY(x, y), x, y);
+                if(this.getModel().getMap().getOnTheMapXY(x, y).getPermeability() == this.getModel().getMap().getDiamant().getPermeability() || this.getModel().getMap().getOnTheMapXY(x, y).getPermeability() == this.getModel().getMap().getRocher().getPermeability())
+                {
+                	if(this.getModel().getMap().getOnTheMapXY(x, y + 1).getPermeability() == this.getModel().getMap().getVide().getPermeability())
+                	{
+                		if(this.getModel().getMap().getOnTheMapXY(x, y).getPermeability() == this.getModel().getMap().getRocher().getPermeability())
+                		{
+                			this.getModel().getMap().setOnTheMapXY( this.getModel().getMap().getVide() ,x , y);
+                			this.getModel().getMap().setOnTheMapXY( this.getModel().getMap().getRocher() ,x , y+1);
+                		}
+                		else if(this.getModel().getMap().getOnTheMapXY(x, y).getPermeability() == this.getModel().getMap().getDiamant().getPermeability())
+                		{
+                			this.getModel().getMap().setOnTheMapXY( this.getModel().getMap().getVide() ,x , y);
+                			this.getModel().getMap().setOnTheMapXY( this.getModel().getMap().getDiamant() ,x , y+1);
+                		}
+                	}
+                }
+            }
+    	}
+    	
+    }
+    
+	@Override
     public final void orderPerform(final UserOrder userOrder) throws IOException {
         this.setStackOrder(userOrder);
     }

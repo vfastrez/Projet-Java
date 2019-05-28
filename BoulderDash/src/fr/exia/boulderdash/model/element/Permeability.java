@@ -8,5 +8,9 @@ public enum Permeability {
     
     TERRE,
     
-    DIAMANT;
+    DIAMANT,
+    
+    VIDE,
+    
+    ROCHER;
 }

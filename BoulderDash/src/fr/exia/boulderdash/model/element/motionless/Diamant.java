@@ -1,10 +1,9 @@
-package fr.exia.boulderdash.model.element.semimobile;
+package fr.exia.boulderdash.model.element.motionless;
 
 import fr.exia.boulderdash.model.element.Permeability;
 import fr.exia.boulderdash.model.element.Sprite;
-import fr.exia.boulderdash.model.element.semimobile.SemiMobileElement;
 
-class Diamant extends SemiMobileElement {
+class Diamant extends MotionlessElement {
 
     private static final Sprite SPRITE = new Sprite('^', "diamant.png");
     

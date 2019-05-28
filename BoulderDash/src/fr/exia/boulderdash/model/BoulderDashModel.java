@@ -10,6 +10,7 @@ public class BoulderDashModel implements IBoulderDashModel {
     private IMap   map;
 
     private IMobile myHero;
+ 
 
     public BoulderDashModel(final String fileName, final int myHeroStartX, final int myHeroStartY)
             throws IOException {

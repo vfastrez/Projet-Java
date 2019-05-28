@@ -13,4 +13,5 @@ public interface IElement extends ISquare {
     @Override
     Image getImage();
 
+    public void setY(final int y);
 }
