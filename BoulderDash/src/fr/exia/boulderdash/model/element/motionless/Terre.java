@@ -22,4 +22,16 @@ class Terre extends MotionlessElement {
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+	@Override
+	public void setMoveEnnemi(Boolean moveEnnemi) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public boolean getmoveEnnemi() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }

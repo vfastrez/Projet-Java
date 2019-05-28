@@ -16,6 +16,8 @@ public interface IMobile extends IPawn, IElement {
     void moveRight();
 
     void doNothing();
+    
+    void die();
 
     @Override
     int getX();

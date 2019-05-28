@@ -80,4 +80,9 @@ public abstract class Element implements IElement {
         return this.board;
     }
 
+	public boolean getMoveEnnemi() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }

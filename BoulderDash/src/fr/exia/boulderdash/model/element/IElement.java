@@ -15,7 +15,13 @@ public interface IElement extends ISquare {
 
     public void setY(final int y);
     
-    public void setTombe(Boolean tombe);
+    public void setMoveEnnemi(Boolean moveEnnemi);
+	
+	public boolean getmoveEnnemi();
+    
+	public void setTombe(Boolean tombe);
     
     public boolean getTombe();
+
+	
 }

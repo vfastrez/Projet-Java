@@ -16,10 +16,21 @@ class Rocher extends MotionlessElement {
     	return this.tombe;
     }
 
-
 	@Override
 	public void setTombe(Boolean tombe) {
 		this.tombe = tombe;
 		//System.out.print("toto");
+	}
+
+	@Override
+	public void setMoveEnnemi(Boolean moveEnnemi) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public boolean getmoveEnnemi() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }

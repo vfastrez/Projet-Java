@@ -63,7 +63,7 @@ public class BoulderDashController implements IBoulderDashController, IOrderPerf
             }
             this.clearStackOrder();
         }
-        this.getView().displayMessage("CRASH !!!!!!!!!.");
+        this.getView().displayMessage("MORT !");
     }
     
     
@@ -160,7 +160,7 @@ public class BoulderDashController implements IBoulderDashController, IOrderPerf
                 }
                 	if ((this.getModel().getMyHero().getY() == y + 1) && (this.getModel().getMyHero().getX() == x) && (this.getModel().getMap().getOnTheMapXY(x, y).getTombe() == true))
                 	{
-                		System.out.println("MORT");
+                		this.getModel().getMyHero().die();
                 	}	
                 }
                 	

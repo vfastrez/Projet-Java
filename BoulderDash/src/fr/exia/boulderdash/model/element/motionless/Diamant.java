@@ -22,4 +22,16 @@ class Diamant extends MotionlessElement {
 	public void setTombe(Boolean tombe) {
 		this.tombe = tombe;
 	}
+
+	@Override
+	public void setMoveEnnemi(Boolean moveEnnemi) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public boolean getmoveEnnemi() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }

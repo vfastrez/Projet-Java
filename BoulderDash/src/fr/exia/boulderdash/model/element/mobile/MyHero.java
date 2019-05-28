@@ -43,7 +43,7 @@ public class MyHero extends Mobile {
     }
 
     @Override
-    protected final void die() {
+    public final void die() {
         super.die();
         this.setSprite(spriteMort);
     }
@@ -74,6 +74,18 @@ public class MyHero extends Mobile {
 
 	@Override
 	public boolean getTombe() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void setMoveEnnemi(Boolean moveEnnemi) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public boolean getmoveEnnemi() {
 		// TODO Auto-generated method stub
 		return false;
 	}
