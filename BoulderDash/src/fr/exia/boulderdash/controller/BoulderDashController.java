@@ -29,17 +29,17 @@ public class BoulderDashController implements IBoulderDashController, IOrderPerf
             int xHero = getModel().getMyHero().getX();
             int yHero = getModel().getMyHero().getY();
             switch (this.getStackOrder()) {
-                case RIGHT:
-                	this.checkDeplacement(xHero + 1, yHero, "Right");
-                	checkTombable();
-                	MoveEnnemi();
-                    break;
-                    
-                case LEFT:
-                	this.checkDeplacement(xHero - 1, yHero, "Left");
-                	checkTombable();
-                	MoveEnnemi();
-                    break;
+			case RIGHT:
+                this.checkDeplacement(xHero + 1, yHero, "Right");
+                checkTombable();
+                checkPoussableDroite();
+                break;
+
+            case LEFT:
+                this.checkDeplacement(xHero - 1, yHero, "Left");
+                checkTombable();
+                checkPoussableGauche();
+                break;
                     
                 case UP:
                 	this.checkDeplacement(xHero, yHero - 1, "Up");
@@ -204,9 +204,51 @@ public class BoulderDashController implements IBoulderDashController, IOrderPerf
          }
     }
 }
-      
-
     
+    public void checkPoussableDroite()
+    {
+        for (int x = this.getModel().getMap().getWidth()-1; x > 0 ; x--) {
+            for (int y = this.getModel().getMap().getHeight() -1; y > 0 ; y--) {
+                getView().getBoardFrame().addSquare(this.getModel().getMap().getOnTheMapXY(x, y), x, y);
+                if( this.getModel().getMap().getOnTheMapXY(x, y).getPermeability() == this.getModel().getMap().getRocher().getPermeability())
+                {
+                    if(this.getModel().getMyHero().getX() == x - 1 && this.getModel().getMyHero().getY() == y)
+                    {
+                        if(this.getModel().getMap().getOnTheMapXY(x + 1, y).getPermeability() == this.getModel().getMap().getVide().getPermeability())
+                        {
+                            this.getModel().getMap().setOnTheMapXY( this.getModel().getMap().getVide() ,x , y);
+                            this.getModel().getMap().setOnTheMapXY( this.getModel().getMap().getRocher() ,x + 1, y);
+                            this.getModel().getMyHero().moveRight();
+                        }
+                    }
+
+                }
+
+              }
+            }
+    }
+public void checkPoussableGauche()
+    {
+        for (int x = this.getModel().getMap().getWidth()-1; x > 0 ; x--) {
+            for (int y = this.getModel().getMap().getHeight() -1; y > 0 ; y--) {
+                getView().getBoardFrame().addSquare(this.getModel().getMap().getOnTheMapXY(x, y), x, y);
+                if( this.getModel().getMap().getOnTheMapXY(x, y).getPermeability() == this.getModel().getMap().getRocher().getPermeability())
+                {
+                    if(this.getModel().getMyHero().getX() == x + 1 && this.getModel().getMyHero().getY() == y)
+                    {
+                        if(this.getModel().getMap().getOnTheMapXY(x - 1, y).getPermeability() == this.getModel().getMap().getVide().getPermeability())
+                        {
+                            this.getModel().getMap().setOnTheMapXY( this.getModel().getMap().getVide() ,x , y);
+                            this.getModel().getMap().setOnTheMapXY( this.getModel().getMap().getRocher() ,x - 1, y);
+                            this.getModel().getMyHero().moveLeft();
+                        }
+                    }
+
+                }
+
+              }
+            }
+    }    
 	@Override
     public final void orderPerform(final UserOrder userOrder) throws IOException {
         this.setStackOrder(userOrder);
