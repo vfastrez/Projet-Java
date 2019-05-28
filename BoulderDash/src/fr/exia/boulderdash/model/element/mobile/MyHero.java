@@ -21,7 +21,7 @@ public class MyHero extends Mobile {
     private static final Sprite spriteImmobile = new Sprite('H', "Immobile.png");
 
     public MyHero(final int x, final int y, final IMap map) throws IOException {
-        super(x, y, spriteBas, map, Permeability.PENETRABLE);
+        super(x, y, spriteBas, map, Permeability.HERO);
         spriteHaut.loadImage();
         spriteBas.loadImage();
         spriteGauche.loadImage();
@@ -65,5 +65,17 @@ public class MyHero extends Mobile {
     	super.moveDown();
     	this.setSprite(spriteBas);
     }
+
+	@Override
+	public void setTombe(Boolean tombe) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public boolean getTombe() {
+		// TODO Auto-generated method stub
+		return false;
+	}
     
 }

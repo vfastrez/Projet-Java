@@ -128,7 +128,7 @@ public class BoulderDashController implements IBoulderDashController, IOrderPerf
                 getView().getBoardFrame().addSquare(this.getModel().getMap().getOnTheMapXY(x, y), x, y);
                 if(this.getModel().getMap().getOnTheMapXY(x, y).getPermeability() == this.getModel().getMap().getDiamant().getPermeability() || this.getModel().getMap().getOnTheMapXY(x, y).getPermeability() == this.getModel().getMap().getRocher().getPermeability())
                 {
-                	if(this.getModel().getMyHero().getY() != y + 1 || this.getModel().getMyHero().getX() != x)
+                	if(this.getModel().getMyHero().getY() != y + 1 || this.getModel().getMyHero().getX() != x) 
                 	{
                 		if(this.getModel().getMap().getOnTheMapXY(x, y + 1).getPermeability() == this.getModel().getMap().getVide().getPermeability())
                     	{
@@ -136,19 +136,31 @@ public class BoulderDashController implements IBoulderDashController, IOrderPerf
                     		{
                     			this.getModel().getMap().setOnTheMapXY( this.getModel().getMap().getVide() ,x , y);
                     			this.getModel().getMap().setOnTheMapXY( this.getModel().getMap().getRocher() ,x , y+1);
+                    			this.getModel().getMap().getOnTheMapXY(x, y+1).setTombe(true);
                     		}
                     		else if(this.getModel().getMap().getOnTheMapXY(x, y).getPermeability() == this.getModel().getMap().getDiamant().getPermeability())
                     		{
                     			this.getModel().getMap().setOnTheMapXY( this.getModel().getMap().getVide() ,x , y);
                     			this.getModel().getMap().setOnTheMapXY( this.getModel().getMap().getDiamant() ,x , y+1);
+                    			this.getModel().getMap().getOnTheMapXY(x, y+1).setTombe(true);
                     		}
-                    	}
-                	}
+                		}	
+                	
+                		else 
+                		{
+                			this.getModel().getMap().getOnTheMapXY(x, y).setTombe(false);
+                		}
+                		
                 }
+                	if ((this.getModel().getMyHero().getY() == y + 1) && (this.getModel().getMyHero().getX() == x) && (this.getModel().getMap().getOnTheMapXY(x, y).getTombe() == true))
+                	{
+                		System.out.println("MORT");
+                	}	
+                }
+                	
+              }
             }
     	}
-    	
-    }
     
 	@Override
     public final void orderPerform(final UserOrder userOrder) throws IOException {

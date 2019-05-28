@@ -10,4 +10,15 @@ class Sortie extends MotionlessElement {
     Sortie() {
         super(SPRITE, Permeability.PENETRABLE);
     }
+
+	@Override
+	public void setTombe(Boolean tombe) {
+		
+	}
+
+	@Override
+	public boolean getTombe() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }

@@ -95,4 +95,8 @@ class Map extends Observable implements IMap {
     public IElement getRocher() {
     	return MotionlessElementsFactory.createRocher();
     }
+    
+    public IElement getBordure() {
+    	return MotionlessElementsFactory.createBordure();
+    }
 }

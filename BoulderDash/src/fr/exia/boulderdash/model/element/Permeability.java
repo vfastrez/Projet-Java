@@ -12,5 +12,7 @@ public enum Permeability {
     
     VIDE,
     
-    ROCHER;
+    ROCHER,
+    
+    HERO;
 }

@@ -10,4 +10,16 @@ class Ennemi extends MotionlessElement {
     Ennemi() {
         super(SPRITE, Permeability.BLOCKING);
     }
+
+	@Override
+	public void setTombe(Boolean tombe) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public boolean getTombe() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }

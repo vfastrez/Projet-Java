@@ -10,4 +10,16 @@ class Terre extends MotionlessElement {
     Terre() {
         super(SPRITE, Permeability.TERRE);
     }
+
+	@Override
+	public void setTombe(Boolean tombe) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public boolean getTombe() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }

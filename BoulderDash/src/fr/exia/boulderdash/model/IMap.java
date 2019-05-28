@@ -20,4 +20,6 @@ public interface IMap {
     IElement getDiamant();
     IElement getRocher();
     void setOnTheMapXY(final IElement element, final int x, final int y);
+
+	IElement getBordure();
 }

@@ -10,4 +10,16 @@ class Vide extends MotionlessElement {
     Vide() {
         super(SPRITE, Permeability.VIDE);
     }
+
+	@Override
+	public void setTombe(Boolean tombe) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public boolean getTombe() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }

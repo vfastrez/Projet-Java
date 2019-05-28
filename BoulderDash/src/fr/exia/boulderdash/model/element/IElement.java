@@ -14,4 +14,8 @@ public interface IElement extends ISquare {
     Image getImage();
 
     public void setY(final int y);
+    
+    public void setTombe(Boolean tombe);
+    
+    public boolean getTombe();
 }
