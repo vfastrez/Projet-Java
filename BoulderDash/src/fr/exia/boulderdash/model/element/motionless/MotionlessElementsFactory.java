@@ -9,11 +9,20 @@ public abstract class MotionlessElementsFactory {
     private static final Terre  terre  = new Terre();
 
     private static final Vide             VIDE             = new Vide();
+    
+    private static final Rocher             ROCHER             = new Rocher();
+    
+    private static final Diamant             DIAMANT             = new Diamant();
+    
+    private static final Ennemi             ENNEMI             = new Ennemi();
 
     private static MotionlessElement[]       motionlessElements  = {
         sortie,
         bordure,
         terre,
+        ROCHER,
+        DIAMANT,
+        ENNEMI,
         VIDE,};
     
     public static MotionlessElement sortie() {
