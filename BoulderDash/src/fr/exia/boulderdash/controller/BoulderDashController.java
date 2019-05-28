@@ -128,18 +128,21 @@ public class BoulderDashController implements IBoulderDashController, IOrderPerf
                 getView().getBoardFrame().addSquare(this.getModel().getMap().getOnTheMapXY(x, y), x, y);
                 if(this.getModel().getMap().getOnTheMapXY(x, y).getPermeability() == this.getModel().getMap().getDiamant().getPermeability() || this.getModel().getMap().getOnTheMapXY(x, y).getPermeability() == this.getModel().getMap().getRocher().getPermeability())
                 {
-                	if(this.getModel().getMap().getOnTheMapXY(x, y + 1).getPermeability() == this.getModel().getMap().getVide().getPermeability())
+                	if(this.getModel().getMyHero().getY() != y + 1 || this.getModel().getMyHero().getX() != x)
                 	{
-                		if(this.getModel().getMap().getOnTheMapXY(x, y).getPermeability() == this.getModel().getMap().getRocher().getPermeability())
-                		{
-                			this.getModel().getMap().setOnTheMapXY( this.getModel().getMap().getVide() ,x , y);
-                			this.getModel().getMap().setOnTheMapXY( this.getModel().getMap().getRocher() ,x , y+1);
-                		}
-                		else if(this.getModel().getMap().getOnTheMapXY(x, y).getPermeability() == this.getModel().getMap().getDiamant().getPermeability())
-                		{
-                			this.getModel().getMap().setOnTheMapXY( this.getModel().getMap().getVide() ,x , y);
-                			this.getModel().getMap().setOnTheMapXY( this.getModel().getMap().getDiamant() ,x , y+1);
-                		}
+                		if(this.getModel().getMap().getOnTheMapXY(x, y + 1).getPermeability() == this.getModel().getMap().getVide().getPermeability())
+                    	{
+                    		if(this.getModel().getMap().getOnTheMapXY(x, y).getPermeability() == this.getModel().getMap().getRocher().getPermeability())
+                    		{
+                    			this.getModel().getMap().setOnTheMapXY( this.getModel().getMap().getVide() ,x , y);
+                    			this.getModel().getMap().setOnTheMapXY( this.getModel().getMap().getRocher() ,x , y+1);
+                    		}
+                    		else if(this.getModel().getMap().getOnTheMapXY(x, y).getPermeability() == this.getModel().getMap().getDiamant().getPermeability())
+                    		{
+                    			this.getModel().getMap().setOnTheMapXY( this.getModel().getMap().getVide() ,x , y);
+                    			this.getModel().getMap().setOnTheMapXY( this.getModel().getMap().getDiamant() ,x , y+1);
+                    		}
+                    	}
                 	}
                 }
             }
