@@ -9,24 +9,15 @@ public abstract class MotionlessElementsFactory {
     private static final Terre  terre  = new Terre();
 
     private static final Vide             VIDE             = new Vide();
-    
-    private static final Rocher             ROCHER             = new Rocher();
-    
-    private static final Diamant             DIAMANT             = new Diamant();
-    
-    private static final Ennemi             ENNEMI             = new Ennemi();
 
     private static MotionlessElement[]       motionlessElements  = {
         sortie,
         bordure,
         terre,
-        ROCHER,
-        DIAMANT,
-        ENNEMI,
         VIDE,};
     
     public static MotionlessElement sortie() {
-        return sortie;
+        return new Sortie();
     }
 
     public static MotionlessElement createBordure() {
@@ -42,15 +33,15 @@ public abstract class MotionlessElementsFactory {
     }
     
     public static MotionlessElement createRocher() {
-        return ROCHER;
+        return new Rocher();
     }
     
     public static MotionlessElement createDiamant() {
-        return DIAMANT;
+        return new Diamant();
     }
     
     public static MotionlessElement createEnnemi() {
-        return ENNEMI;
+        return new Ennemi();
     }
     
 
