@@ -1,9 +1,9 @@
 20
 20
 ++++++++++++++++++++
-+!O!+^   !XXOXXX^  +
-+OXO+ XXX XXOOXXX  +
-+X*X+!   ^X^XXXX  !+
++!O!+!   !XXOXXX!  +
++OOX+     XXOOXX   +
++XX*+^   ^X^XXXX  ^+
 +XXX+XXX++++++++XX^+
 +XXX+XOX+XXXOXO+X O+
 +   +XOX+X^XXOO+XXX+
