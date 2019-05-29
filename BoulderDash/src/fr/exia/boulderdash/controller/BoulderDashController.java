@@ -34,6 +34,7 @@ public class BoulderDashController implements IBoulderDashController, IOrderPerf
             int yHero = getModel().getMyHero().getY();
             switch (this.getStackOrder()) {
 			case RIGHT:
+				checkEnnemi(xHero, yHero);
 				checkPoussableDroite();
                 this.checkDeplacement(xHero + 1, yHero, "Right");
                 checkTombable();
@@ -41,6 +42,7 @@ public class BoulderDashController implements IBoulderDashController, IOrderPerf
                 break;
 
             case LEFT:
+            	checkEnnemi(xHero, yHero);
             	checkPoussableGauche();
                 this.checkDeplacement(xHero - 1, yHero, "Left");
                 checkTombable();
@@ -48,12 +50,14 @@ public class BoulderDashController implements IBoulderDashController, IOrderPerf
                 break;
                     
                 case UP:
+                	checkEnnemi(xHero, yHero);
                 	this.checkDeplacement(xHero, yHero - 1, "Up");
                 	checkTombable();
                 	MoveEnnemi();
                     break;
                     
                 case DOWN:
+                	checkEnnemi(xHero, yHero);
                 	this.checkDeplacement(xHero, yHero + 1, "Down");
                 	checkTombable();
                 	MoveEnnemi();
@@ -61,6 +65,7 @@ public class BoulderDashController implements IBoulderDashController, IOrderPerf
                     
                 case NOP:
                 default:
+                	checkEnnemi(xHero, yHero);
                     this.getModel().getMyHero().doNothing();
                     checkTombable();
                     MoveEnnemi();
@@ -339,6 +344,14 @@ public class BoulderDashController implements IBoulderDashController, IOrderPerf
 
               }
             }
+    }
+    
+    public void checkEnnemi(int x, int y)
+    {
+        if (this.getModel().getMap().getOnTheMapXY(x + 1, y).getPermeability() == this.getModel().getMap().getEnnemi().getPermeability() || this.getModel().getMap().getOnTheMapXY(x - 1, y).getPermeability() == this.getModel().getMap().getEnnemi().getPermeability() || this.getModel().getMap().getOnTheMapXY(x, y+1).getPermeability() == this.getModel().getMap().getEnnemi().getPermeability() || this.getModel().getMap().getOnTheMapXY(x, y - 1).getPermeability() == this.getModel().getMap().getEnnemi().getPermeability())
+        {
+            this.getModel().getMyHero().die();
+        }
     }
     
 	@Override
