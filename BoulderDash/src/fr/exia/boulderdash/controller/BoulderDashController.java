@@ -30,15 +30,15 @@ public class BoulderDashController implements IBoulderDashController, IOrderPerf
             int yHero = getModel().getMyHero().getY();
             switch (this.getStackOrder()) {
 			case RIGHT:
+				checkPoussableDroite();
                 this.checkDeplacement(xHero + 1, yHero, "Right");
                 checkTombable();
-                checkPoussableDroite();
                 break;
 
             case LEFT:
+            	checkPoussableGauche();
                 this.checkDeplacement(xHero - 1, yHero, "Left");
                 checkTombable();
-                checkPoussableGauche();
                 break;
                     
                 case UP:
@@ -218,7 +218,6 @@ public class BoulderDashController implements IBoulderDashController, IOrderPerf
                         {
                             this.getModel().getMap().setOnTheMapXY( this.getModel().getMap().getVide() ,x , y);
                             this.getModel().getMap().setOnTheMapXY( this.getModel().getMap().getRocher() ,x + 1, y);
-                            this.getModel().getMyHero().moveRight();
                         }
                     }
 
@@ -227,9 +226,10 @@ public class BoulderDashController implements IBoulderDashController, IOrderPerf
               }
             }
     }
-public void checkPoussableGauche()
+
+    public void checkPoussableGauche()
     {
-        for (int x = this.getModel().getMap().getWidth()-1; x > 0 ; x--) {
+        for (int x = 0; x < this.getModel().getMap().getWidth()-1 ; x++) {
             for (int y = this.getModel().getMap().getHeight() -1; y > 0 ; y--) {
                 getView().getBoardFrame().addSquare(this.getModel().getMap().getOnTheMapXY(x, y), x, y);
                 if( this.getModel().getMap().getOnTheMapXY(x, y).getPermeability() == this.getModel().getMap().getRocher().getPermeability())
@@ -240,7 +240,6 @@ public void checkPoussableGauche()
                         {
                             this.getModel().getMap().setOnTheMapXY( this.getModel().getMap().getVide() ,x , y);
                             this.getModel().getMap().setOnTheMapXY( this.getModel().getMap().getRocher() ,x - 1, y);
-                            this.getModel().getMyHero().moveLeft();
                         }
                     }
 
@@ -248,7 +247,8 @@ public void checkPoussableGauche()
 
               }
             }
-    }    
+    }
+    
 	@Override
     public final void orderPerform(final UserOrder userOrder) throws IOException {
         this.setStackOrder(userOrder);

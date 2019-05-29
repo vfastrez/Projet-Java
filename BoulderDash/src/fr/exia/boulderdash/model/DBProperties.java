@@ -10,7 +10,7 @@ class DBProperties extends Properties {
 
 	private static final long		serialVersionUID = 5289057445894568927L;
 	private final static String	PROPERTIES_FILE_NAME	= "model.properties";
-	private String	url	= "jdbc:mysql://localhost:3306/projet java?zeroDateTimeBehavior=CONVERT_TO_NULL&serverTimezone=UTC";
+	private String	url	= "jdbc:mysql://localhost:3301/projet java?zeroDateTimeBehavior=CONVERT_TO_NULL&serverTimezone=UTC";
 	private String	login = "root";
 	private String	password = "";
 	
