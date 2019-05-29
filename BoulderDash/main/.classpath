@@ -13,7 +13,6 @@
 	</classpathentry>
 	<classpathentry kind="src" path="/view"/>
 	<classpathentry kind="src" path="/contract"/>
-	<classpathentry kind="src" path="/entity"/>
 	<classpathentry kind="src" path="/model"/>
 	<classpathentry kind="var" path="M2_REPO/mysql/mysql-connector-java/5.1.39/mysql-connector-java-5.1.39.jar" sourcepath="M2_REPO/mysql/mysql-connector-java/5.1.39/mysql-connector-java-5.1.39-sources.jar"/>
 	<classpathentry kind="src" path="/controller"/>
