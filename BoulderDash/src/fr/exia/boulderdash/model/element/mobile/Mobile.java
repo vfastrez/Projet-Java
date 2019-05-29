@@ -13,6 +13,8 @@ abstract class Mobile extends Element implements IMobile {
     private Point   position;
 
     private Boolean alive = true;
+    
+    private Boolean sortir = false;
 
     private IMap   map;
 
@@ -98,6 +100,16 @@ abstract class Mobile extends Element implements IMobile {
     @Override
     public Boolean isAlive() {
         return this.alive;
+    }
+    
+    public boolean sortir()
+    {
+    	return this.sortir;
+    }
+    
+    public void setSortir(boolean sortir)
+    {
+    	this.sortir = sortir;
     }
 
     public void die() {

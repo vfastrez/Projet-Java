@@ -21,6 +21,7 @@ public interface IMap {
     IElement getRocher();
     IElement getBordure();
 	IElement getEnnemi();
+	IElement getSortie();
     void setOnTheMapXY(final IElement element, final int x, final int y);
 
 	

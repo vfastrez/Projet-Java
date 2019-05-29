@@ -8,7 +8,7 @@ class Sortie extends MotionlessElement {
     private static final Sprite SPRITE = new Sprite('/', "Sortie.png");
 
     Sortie() {
-        super(SPRITE, Permeability.PENETRABLE);
+        super(SPRITE, Permeability.SORTIE);
     }
 
 	@Override

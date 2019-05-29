@@ -137,4 +137,8 @@ class Map extends Observable implements IMap {
 	public IElement getEnnemi() {
 		return MotionlessElementsFactory.createEnnemi();
 	}
+	
+	public IElement getSortie() {
+		return MotionlessElementsFactory.sortie();
+	}
 }

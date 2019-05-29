@@ -31,4 +31,8 @@ public interface IMobile extends IPawn, IElement {
 
     @Override
     Point getPosition();
+
+	boolean sortir();
+	
+	void setSortir(boolean sortir);
 }

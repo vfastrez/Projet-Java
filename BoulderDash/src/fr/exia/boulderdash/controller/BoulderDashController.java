@@ -25,7 +25,7 @@ public class BoulderDashController implements IBoulderDashController, IOrderPerf
 
     @Override
     public final void play() throws InterruptedException {
-        while (this.getModel().getMyHero().isAlive()) {
+    	while (this.getModel().getMyHero().isAlive() && this.getModel().getMyHero().sortir() == false) {
             Thread.sleep(speed);
             this.getView().parcourirTableau();
             int xHero = getModel().getMyHero().getX();
@@ -65,8 +65,15 @@ public class BoulderDashController implements IBoulderDashController, IOrderPerf
             }
             this.clearStackOrder();
         }
-        this.getView().displayMessage("MORT !");
-    }
+    	if (this.getModel().getMyHero().isAlive() == false)
+    	{
+    		this.getView().displayMessage("MORT !");
+    	}
+    	else
+    	{
+    		this.getView().displayMessage("GAGNAGE !");
+    	}
+      }
     
     
     public void checkDeplacement(int xHero, int yHero, String Direction)
@@ -82,6 +89,15 @@ public class BoulderDashController implements IBoulderDashController, IOrderPerf
     		this.moveDiamant(xHero, yHero, Direction);
     		nbrD++;
             System.out.println("Diamanteuh : " + nbrD);
+    	}
+    	
+    	else if (this.getModel().getMap().getOnTheMapXY(xHero, yHero).getPermeability() == this.getModel().getMap().getSortie().getPermeability())
+    	{
+    		this.moveSortie(xHero, yHero, Direction);
+    	}
+    	if (nbrD >= 10 && this.getModel().getMap().getOnTheMapXY(xHero, yHero).getPermeability() == this.getModel().getMap().getSortie().getPermeability())
+    	{
+    		this.getModel().getMyHero().setSortir(true);
     	}
     }
     
@@ -131,6 +147,25 @@ public class BoulderDashController implements IBoulderDashController, IOrderPerf
 		}
     }
 
+    public void moveSortie(int xHero, int yHero, String Direction)
+    {
+    	
+    	if(Direction == "Right") {
+			this.getModel().getMyHero().moveRight();
+		}
+			
+		else if(Direction == "Left") {
+			this.getModel().getMyHero().moveLeft();
+		}
+			
+		else if(Direction == "Up") {
+			this.getModel().getMyHero().moveUp();
+		}
+			
+		else if(Direction == "Down") {
+			this.getModel().getMyHero().moveDown();
+		}
+    }
     public void checkTombable()
     {
     	for (int x = this.getModel().getMap().getWidth()-1; x > 0 ; x--) {
