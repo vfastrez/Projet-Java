@@ -182,7 +182,7 @@ public class BoulderDashController implements IBoulderDashController, IOrderPerf
     	{
     		if(this.getModel().getMap().getOnTheMapXY(x -1, y).getPermeability() == this.getModel().getMap().getVide().getPermeability())
         	{
-    			if(this.getModel().getMap().getOnTheMapXY(x -1, y + 1).getPermeability() == this.getModel().getMap().getVide().getPermeability())
+    			if(this.getModel().getMap().getOnTheMapXY(x -1, y + 1).getPermeability() == this.getModel().getMap().getVide().getPermeability() && (this.getModel().getMyHero().getX() != x - 1 || this.getModel().getMyHero().getY() != y))
     			{
     				if(this.getModel().getMap().getOnTheMapXY(x, y).getPermeability() == this.getModel().getMap().getRocher().getPermeability())
             		{
@@ -203,7 +203,7 @@ public class BoulderDashController implements IBoulderDashController, IOrderPerf
     	{
     		if(this.getModel().getMap().getOnTheMapXY(x +1, y).getPermeability() == this.getModel().getMap().getVide().getPermeability())
         	{
-    			if(this.getModel().getMap().getOnTheMapXY(x +1, y + 1).getPermeability() == this.getModel().getMap().getVide().getPermeability())
+    			if(this.getModel().getMap().getOnTheMapXY(x +1, y + 1).getPermeability() == this.getModel().getMap().getVide().getPermeability() && (this.getModel().getMyHero().getX() != x + 1 || this.getModel().getMyHero().getY() != y))
     			{
     				if(this.getModel().getMap().getOnTheMapXY(x, y).getPermeability() == this.getModel().getMap().getRocher().getPermeability())
             		{
