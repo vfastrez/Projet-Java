@@ -16,6 +16,8 @@ public class BoulderDashController implements IBoulderDashController, IOrderPerf
     private static int nbrD = 0;
 
     private UserOrder            stackOrder;
+    
+    int nombreAleatoire;
 
     public BoulderDashController(final IBoulderDashView view, final IBoulderDashModel model) {
         this.setView(view);
@@ -35,12 +37,14 @@ public class BoulderDashController implements IBoulderDashController, IOrderPerf
 				checkPoussableDroite();
                 this.checkDeplacement(xHero + 1, yHero, "Right");
                 checkTombable();
+                MoveEnnemi();
                 break;
 
             case LEFT:
             	checkPoussableGauche();
                 this.checkDeplacement(xHero - 1, yHero, "Left");
                 checkTombable();
+                MoveEnnemi();
                 break;
                     
                 case UP:
@@ -206,43 +210,92 @@ public class BoulderDashController implements IBoulderDashController, IOrderPerf
               }
             }
     }
-    
-    public void MoveEnnemi() {
-    
+    public void MoveEnnemiBas(){
+        
     for (int x = this.getModel().getMap().getWidth()-1; x > 0 ; x--) 
     {
         for (int y = this.getModel().getMap().getHeight() -1; y > 0 ; y--) 
         {
             getView().getBoardFrame().addSquare(this.getModel().getMap().getOnTheMapXY(x, y), x, y);
-            if(this.getModel().getMap().getOnTheMapXY(x, y).getPermeability() == this.getModel().getMap().getEnnemi().getPermeability())
-            {
-                if(this.getModel().getMap().getOnTheMapXY(x + 1, y).getPermeability() == this.getModel().getMap().getVide().getPermeability())
-                {
-                    this.getModel().getMap().setOnTheMapXY( this.getModel().getMap().getVide() ,x , y);
-                    this.getModel().getMap().setOnTheMapXY( this.getModel().getMap().getEnnemi() ,x + 1, y);
-                    
-                    if(this.getModel().getMap().getOnTheMapXY(x , y - 1).getPermeability() == this.getModel().getMap().getVide().getPermeability())
-                    {
-                        this.getModel().getMap().setOnTheMapXY( this.getModel().getMap().getVide() ,x , y);
-                        this.getModel().getMap().setOnTheMapXY( this.getModel().getMap().getEnnemi() ,x , y - 1);
-                    
-                        if(this.getModel().getMap().getOnTheMapXY(x - 1 , y).getPermeability() == this.getModel().getMap().getVide().getPermeability())
-                        {
-                        	this.getModel().getMap().setOnTheMapXY( this.getModel().getMap().getVide() ,x , y);
-                        	this.getModel().getMap().setOnTheMapXY( this.getModel().getMap().getEnnemi() ,x - 1 , y);
-                        
-                        	if(this.getModel().getMap().getOnTheMapXY(x , y + 1).getPermeability() == this.getModel().getMap().getVide().getPermeability())
+            
+            if(this.getModel().getMap().getOnTheMapXY(x, y).getPermeability() == this.getModel().getMap().getEnnemi().getPermeability()) {
+                if(this.getModel().getMap().getOnTheMapXY(x , y+1).getPermeability() == this.getModel().getMap().getVide().getPermeability())
                         	{
                         		this.getModel().getMap().setOnTheMapXY( this.getModel().getMap().getVide() ,x , y);
-                        		this.getModel().getMap().setOnTheMapXY( this.getModel().getMap().getEnnemi() ,x , y + 1);
+                        		this.getModel().getMap().setOnTheMapXY( this.getModel().getMap().getEnnemi() ,x , y+1);
                         	}
-                        }
-                    }
-                }
-             }
-         }
+            }
+          }
     }
+    }
+    public void MoveEnnemiDroite(){
+    for (int y = 0 ; y < this.getModel().getMap().getHeight() -1 ; y++) 
+    { 
+    	for (int x = this.getModel().getMap().getWidth()-1 ; x > 0  ; x--)
+        {
+            getView().getBoardFrame().addSquare(this.getModel().getMap().getOnTheMapXY(x, y), x, y);
+            
+            if(this.getModel().getMap().getOnTheMapXY(x, y).getPermeability() == this.getModel().getMap().getEnnemi().getPermeability()) {
+                if(this.getModel().getMap().getOnTheMapXY(x+1 , y).getPermeability() == this.getModel().getMap().getVide().getPermeability())
+                        	{
+                        		this.getModel().getMap().setOnTheMapXY( this.getModel().getMap().getVide() ,x , y);
+                        		this.getModel().getMap().setOnTheMapXY( this.getModel().getMap().getEnnemi() ,x+1 , y);
+                        	}
+            }
+          }
+     }
+    }
+    public void MoveEnnemiHaut(){
+    for (int x = 0 ; x < this.getModel().getMap().getWidth()-1 ; x++) 
+    {
+        for (int y = 0 ; y < this.getModel().getMap().getHeight() -1 ; y++) 
+        {
+            getView().getBoardFrame().addSquare(this.getModel().getMap().getOnTheMapXY(x, y), x, y);
+            
+            if(this.getModel().getMap().getOnTheMapXY(x, y).getPermeability() == this.getModel().getMap().getEnnemi().getPermeability()) {
+                if(this.getModel().getMap().getOnTheMapXY(x , y-1).getPermeability() == this.getModel().getMap().getVide().getPermeability())
+                        	{
+                        		this.getModel().getMap().setOnTheMapXY( this.getModel().getMap().getVide() ,x , y);
+                        		this.getModel().getMap().setOnTheMapXY( this.getModel().getMap().getEnnemi() ,x , y-1);
+                        	}
+            }
+          }
+     }
 }
+    public void MoveEnnemiGauche(){
+    for (int y = this.getModel().getMap().getHeight() -1 ; y > 0  ; y--) 
+    { 
+    	for (int x = 0 ; x < this.getModel().getMap().getWidth()-1  ; x++)
+        {
+            getView().getBoardFrame().addSquare(this.getModel().getMap().getOnTheMapXY(x, y), x, y);
+            
+            if(this.getModel().getMap().getOnTheMapXY(x, y).getPermeability() == this.getModel().getMap().getEnnemi().getPermeability()) {
+                if(this.getModel().getMap().getOnTheMapXY(x-1 , y).getPermeability() == this.getModel().getMap().getVide().getPermeability())
+                        	{
+                        		this.getModel().getMap().setOnTheMapXY( this.getModel().getMap().getVide() ,x , y);
+                        		this.getModel().getMap().setOnTheMapXY( this.getModel().getMap().getEnnemi() ,x-1 , y);
+                        	}
+            }
+          }
+     }
+    }     
+    public void MoveEnnemi() {
+    	nombreAleatoire = 1 + (int)(Math.random() * ((4 - 1) + 1));
+    	switch(nombreAleatoire) {
+    	case 1 :
+    		MoveEnnemiGauche();
+    	break;
+    	case 2 :
+        	MoveEnnemiHaut();
+        break;
+    	case 3 :
+        	MoveEnnemiDroite();
+        break;
+    	case 4 :
+        	MoveEnnemiBas();
+        break;
+    	}
+    }
     
     public void checkPoussableDroite()
     {

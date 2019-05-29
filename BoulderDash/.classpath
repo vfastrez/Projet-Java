@@ -11,12 +11,13 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/singe/git/Projet-Java/BoulderDash/showboard.jar"/>
+	<classpathentry kind="lib" path="C:/Users/loicb/OneDrive/Documents/CESi Exia/Projet/Projet 5 Java/Notre projet/Livrables/Crazyc.zip"/>
 	<classpathentry kind="lib" path="lib/mysql-connector-java-8.0.11.jar"/>
 	<classpathentry kind="con" path="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER">
 		<attributes>
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/loicb/git/Projet-Java/BoulderDash/showboard.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
