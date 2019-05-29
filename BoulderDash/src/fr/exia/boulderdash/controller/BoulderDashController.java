@@ -12,6 +12,8 @@ public class BoulderDashController implements IBoulderDashController, IOrderPerf
     private IBoulderDashView  view;
     
     private IBoulderDashModel model;
+    
+    private static int nbrD = 0;
 
     private UserOrder            stackOrder;
 
@@ -78,6 +80,8 @@ public class BoulderDashController implements IBoulderDashController, IOrderPerf
     	{
     		
     		this.moveDiamant(xHero, yHero, Direction);
+    		nbrD++;
+            System.out.println("Diamanteuh : " + nbrD);
     	}
     }
     
