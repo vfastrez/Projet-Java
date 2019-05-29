@@ -33,7 +33,7 @@ class Map extends Observable implements IMap {
     		CallableStatement call;
     		try {
     			call = DBConnection.getInstance().getConnection().prepareCall(sql);
-    			call.setInt(1, 1);
+    			call.setInt(1, 3);
     			call.execute();
     			ResultSet resultSet = call.getResultSet();
     	
