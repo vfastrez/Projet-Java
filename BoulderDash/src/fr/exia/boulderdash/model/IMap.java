@@ -6,7 +6,8 @@ import fr.exia.boulderdash.model.element.IElement;
 
 public interface IMap {
 
-    int getWidth();
+    boolean getEnnemi = false;
+	int getWidth();
 
     int getHeight();
 

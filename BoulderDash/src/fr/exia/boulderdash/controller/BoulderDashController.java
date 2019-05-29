@@ -38,7 +38,7 @@ public class BoulderDashController implements IBoulderDashController, IOrderPerf
 				checkPoussableDroite();
                 this.checkDeplacement(xHero + 1, yHero, "Right");
                 checkTombable();
-                MoveEnnemi();
+                //MoveEnnemi();
                 break;
 
             case LEFT:
@@ -46,21 +46,21 @@ public class BoulderDashController implements IBoulderDashController, IOrderPerf
             	checkPoussableGauche();
                 this.checkDeplacement(xHero - 1, yHero, "Left");
                 checkTombable();
-                MoveEnnemi();
+                //MoveEnnemi();
                 break;
                     
                 case UP:
                 	checkEnnemi(xHero, yHero);
                 	this.checkDeplacement(xHero, yHero - 1, "Up");
                 	checkTombable();
-                	MoveEnnemi();
+                	//MoveEnnemi();
                     break;
                     
                 case DOWN:
                 	checkEnnemi(xHero, yHero);
                 	this.checkDeplacement(xHero, yHero + 1, "Down");
                 	checkTombable();
-                	MoveEnnemi();
+                	//MoveEnnemi();
                     break;
                     
                 case NOP:
@@ -68,7 +68,7 @@ public class BoulderDashController implements IBoulderDashController, IOrderPerf
                 	checkEnnemi(xHero, yHero);
                     this.getModel().getMyHero().doNothing();
                     checkTombable();
-                    MoveEnnemi();
+                    //MoveEnnemi();
                     break;
                  
             }
@@ -182,7 +182,7 @@ public class BoulderDashController implements IBoulderDashController, IOrderPerf
                 getView().getBoardFrame().addSquare(this.getModel().getMap().getOnTheMapXY(x, y), x, y);
                 if(this.getModel().getMap().getOnTheMapXY(x, y).getPermeability() == this.getModel().getMap().getDiamant().getPermeability() || this.getModel().getMap().getOnTheMapXY(x, y).getPermeability() == this.getModel().getMap().getRocher().getPermeability())
                 {
-                	if(this.getModel().getMyHero().getY() != y + 1 || this.getModel().getMyHero().getX() != x) 
+                	if((this.getModel().getMyHero().getY() != y + 1 || this.getModel().getMyHero().getX() != x) && (this.getModel().getMap().getEnnemi().getPermeability() != this.getModel().getMap().getOnTheMapXY(x, y + 1).getPermeability())) 
                 	{
                 		if(this.getModel().getMap().getOnTheMapXY(x, y + 1).getPermeability() == this.getModel().getMap().getVide().getPermeability())
                     	{
@@ -209,7 +209,19 @@ public class BoulderDashController implements IBoulderDashController, IOrderPerf
                 	if ((this.getModel().getMyHero().getY() == y + 1) && (this.getModel().getMyHero().getX() == x) && (this.getModel().getMap().getOnTheMapXY(x, y).getTombe() == true))
                 	{
                 		this.getModel().getMyHero().die();
-                	}	
+                	}
+                	if ((this.getModel().getMap().getEnnemi().getPermeability() == this.getModel().getMap().getOnTheMapXY(x, y + 1).getPermeability()) && (this.getModel().getMap().getOnTheMapXY(x, y).getTombe() == true))
+                    {
+                    	this.getModel().getMap().setOnTheMapXY(this.getModel().getMap().getDiamant() ,x -1, y);
+                    	this.getModel().getMap().setOnTheMapXY(this.getModel().getMap().getDiamant() ,x , y);
+                    	this.getModel().getMap().setOnTheMapXY(this.getModel().getMap().getDiamant() ,x +1, y);
+                    	this.getModel().getMap().setOnTheMapXY(this.getModel().getMap().getDiamant() ,x -1, y+1);
+                    	this.getModel().getMap().setOnTheMapXY(this.getModel().getMap().getDiamant() ,x , y +1);
+                    	this.getModel().getMap().setOnTheMapXY(this.getModel().getMap().getDiamant() ,x +1, y+1);
+                    	this.getModel().getMap().setOnTheMapXY(this.getModel().getMap().getDiamant() ,x -1, y+2);
+                    	this.getModel().getMap().setOnTheMapXY(this.getModel().getMap().getDiamant() ,x , y+2);
+                    	this.getModel().getMap().setOnTheMapXY(this.getModel().getMap().getDiamant() ,x +1, y+2);
+                    }
                 }
                 	
               }
