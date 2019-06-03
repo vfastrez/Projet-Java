@@ -33,7 +33,7 @@ class Map extends Observable implements IMap {
     		CallableStatement call;
     		try {
     			call = DBConnection.getInstance().getConnection().prepareCall(sql);
-    			call.setInt(1, 3);
+    			call.setInt(1, 1);
     			call.execute();
     			ResultSet resultSet = call.getResultSet();
     	
@@ -44,7 +44,7 @@ class Map extends Observable implements IMap {
     					i = 0;
     					Map = Map +"\r\n";
     				}
-    				PrintWriter writer = new PrintWriter("C:\\Users\\singe\\git\\Projet-Java\\BoulderDash\\Map.txt", "UTF-8");
+    				PrintWriter writer = new PrintWriter("C:\\Users\\Théotime\\git\\Projet-Java\\BoulderDash\\Map.txt", "UTF-8");
     				writer.println("20\r\n20");
     				writer.println(Map);
     				writer.close();
